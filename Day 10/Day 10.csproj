@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9FC460F9-B3E3-4143-83B9-B57330716210}</ProjectGuid>
+    <ProjectGuid>{A2671CE9-4164-4458-953C-F2DA86F253B0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Day7_OO</RootNamespace>
-    <AssemblyName>Day7-OO</AssemblyName>
+    <RootNamespace>Day_10</RootNamespace>
+    <AssemblyName>Day 10</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,12 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Day7_OO.W2_3</StartupObject>
+    <StartupObject>Day_10._5_2</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ISSLIB">
-      <HintPath>..\..\..\ISS Library\ISSLIB.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,13 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="W2_3.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="5_1.cs" />
+    <Compile Include="5_2.cs" />
+    <Compile Include="Animal.cs" />
+    <Compile Include="Customer Main.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="New.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Program2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rectangle.cs" />
-    <Compile Include="W2_2.cs" />
+    <Compile Include="Shape Main.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
