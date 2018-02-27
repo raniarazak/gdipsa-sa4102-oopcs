@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Day_10
 {
-    
+        class InsufficientFundsException:ApplicationException
+        {
+            public InsufficientFundsException() : base() { }
+            public InsufficientFundsException(string g): base(g){}
+
+        }
 
         public class Account
         {
@@ -64,18 +69,15 @@ namespace Day_10
             }
 
             //methods
-            public virtual bool Withdraw(double amount)
+            public virtual void Withdraw(double amount)
             {
                 if (amount <= balance)
                 {
                     balance = balance - amount;
-                    return true;
                 }
 
                 else
-                    Console.Error.WriteLine("Not enough funds!");
-                return false;
-
+                    throw new InsufficientFundsException("Not enough funds");
             }
 
             public void Deposit(double amount)
@@ -83,18 +85,17 @@ namespace Day_10
                 balance = balance + amount;
             }
 
-            public bool TransferTo(double amount, Account AccountToTransfer)
+            public void TransferTo(double amount, Account AccountToTransfer)
             {
-                if (Withdraw(amount))
+                try
                 {
+                    Withdraw(amount);
                     AccountToTransfer.Deposit(amount);
-                    return true;
                 }
-                else
+                catch(InsufficientFundsException e)
                 {
-                    Console.Error.WriteLine("Transfer unsuccesful");
-
-                    return false;
+                    Console.WriteLine("IN TRANSFER TO "+e.Message);
+                
                 }
             }
 
@@ -186,11 +187,10 @@ namespace Day_10
                 }
             }
 
-            public override bool Withdraw(double amount)
+            public override void Withdraw(double amount)
             {
                 balance = balance - amount;
                 Console.WriteLine("WIthdraw of overdraft");
-                return true;
 
             }
 
@@ -218,15 +218,15 @@ namespace Day_10
             //s.CreditInterest();
             //s.Show();
 
-            //CurrentAccount c = new CurrentAccount("7345-4353-33", c2, 3500);
-            //c.Show();
-            //Console.WriteLine(c.CalculateInterest());
-            //c.CreditInterest();
-            //c.Show();
+            CurrentAccount c = new CurrentAccount("7345-4353-33", c2, 3500);
+            c.Show();
+            Console.WriteLine(c.CalculateInterest());
+            c.CreditInterest();
+            c.Show();
 
-            OverDraftAccount o = new OverDraftAccount("3434-34535-22", c3, -500);
-            o.Withdraw(500);
-            o.Show();
+            //OverDraftAccount o = new OverDraftAccount("3434-34535-22", c3, -500);
+            //o.Withdraw(500);
+            //o.Show();
             //o.Show();
             //Console.WriteLine(o.CalculateInterest());
             //o.CreditInterest();
@@ -238,6 +238,15 @@ namespace Day_10
             Console.WriteLine(sa.CalculateInterest());
             sa.CreditInterest();
             sa.Show();
+
+            try
+            {
+                c.TransferTo(4000,sa);
+            }
+            catch(InsufficientFundsException e)
+            {
+                Console.WriteLine("IN MAIN "+e.Message);
+            }
 
 
         }

@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Day11
+namespace Additional_Ex
 {
-
-    class Program_2
+    class 
+    class Program
     {
+        static void Main(string[] args)
+        {
+        }
     }
 }
